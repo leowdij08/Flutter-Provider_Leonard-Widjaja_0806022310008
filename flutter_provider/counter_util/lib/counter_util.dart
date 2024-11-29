@@ -1,12 +1,10 @@
-library counter_util;
-
 import 'package:flutter/material.dart';
 
 class Counter {
   int value;
   Color color;
 
-  Counter({this.value = 0, this.color = Colors.blue});
+  Counter({this.value = 0, required this.color});
 
   void increment() {
     value++;
@@ -27,7 +25,9 @@ class GlobalState {
   List<Counter> get counters => _counters;
 
   void addCounter() {
-    _counters.add(Counter());
+    // Pilih warna secara siklus dari daftar Colors.primaries
+    final newColor = Colors.primaries[_counters.length % Colors.primaries.length];
+    _counters.add(Counter(color: newColor));
   }
 
   void removeCounter(int index) {

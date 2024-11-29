@@ -112,7 +112,7 @@ class CounterCard extends StatelessWidget {
         ),
         leading: IconButton(
           onPressed: onRemove,
-          icon: const Icon(Icons.delete, color: Colors.red),
+          icon: const Icon(Icons.delete, color: Colors.black),
         ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
