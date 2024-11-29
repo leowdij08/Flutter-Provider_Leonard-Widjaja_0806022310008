@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math'; // Untuk random generator
 
 class Counter {
   int value;
@@ -21,6 +22,7 @@ class Counter {
 
 class GlobalState {
   final List<Counter> _counters = [];
+  final Random _random = Random(); // Inisialisasi random generator
 
   List<Counter> get counters => _counters;
 
@@ -42,7 +44,15 @@ class GlobalState {
     _counters[index].decrement();
   }
 
-  void changeCounterColor(int index, Color newColor) {
+  void changeCounterColor(int index) {
+    final currentColor = _counters[index].color;
+
+    // Pilih warna acak yang berbeda dari warna saat ini
+    Color newColor;
+    do {
+      newColor = Colors.primaries[_random.nextInt(Colors.primaries.length)];
+    } while (newColor == currentColor);
+
     _counters[index].changeColor(newColor);
   }
 

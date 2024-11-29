@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:counter_util/counter_util.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -35,6 +34,7 @@ class _CounterListPageState extends State<CounterListPage> {
       appBar: AppBar(
         title: const Text('Global Counter App'),
         actions: [
+          // Tombol tambah counter
           IconButton(
             onPressed: () {
               setState(() {
@@ -42,6 +42,17 @@ class _CounterListPageState extends State<CounterListPage> {
               });
             },
             icon: const Icon(Icons.add),
+          ),
+          // Tombol hapus counter terakhir
+          IconButton(
+            onPressed: () {
+              if (globalState.counters.isNotEmpty) {
+                setState(() {
+                  globalState.removeCounter(globalState.counters.length - 1);
+                });
+              }
+            },
+            icon: const Icon(Icons.remove),
           ),
         ],
       ),
@@ -57,6 +68,7 @@ class _CounterListPageState extends State<CounterListPage> {
           return CounterCard(
             key: ValueKey(counter),
             counter: counter,
+            counterIndex: index + 1, // Menampilkan nomor urutan counter
             onIncrement: () {
               setState(() {
                 globalState.incrementCounter(index);
@@ -72,9 +84,9 @@ class _CounterListPageState extends State<CounterListPage> {
                 globalState.removeCounter(index);
               });
             },
-            onChangeColor: (color) {
+            onChangeColor: () {
               setState(() {
-                globalState.changeCounterColor(index, color);
+                globalState.changeCounterColor(index);
               });
             },
           );
@@ -86,13 +98,15 @@ class _CounterListPageState extends State<CounterListPage> {
 
 class CounterCard extends StatelessWidget {
   final Counter counter;
+  final int counterIndex;
   final VoidCallback onIncrement;
   final VoidCallback onDecrement;
   final VoidCallback onRemove;
-  final ValueChanged<Color> onChangeColor;
+  final VoidCallback onChangeColor;
 
   const CounterCard({
     required this.counter,
+    required this.counterIndex,
     required this.onIncrement,
     required this.onDecrement,
     required this.onRemove,
@@ -107,7 +121,7 @@ class CounterCard extends StatelessWidget {
       color: counter.color,
       child: ListTile(
         title: Text(
-          'Counter: ${counter.value}',
+          'Counter $counterIndex: ${counter.value}', // Label nomor urutan counter
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
         leading: IconButton(
@@ -126,10 +140,7 @@ class CounterCard extends StatelessWidget {
               icon: const Icon(Icons.add),
             ),
             IconButton(
-              onPressed: () {
-                final randomColor = Colors.primaries[counter.value % Colors.primaries.length];
-                onChangeColor(randomColor);
-              },
+              onPressed: onChangeColor,
               icon: const Icon(Icons.color_lens),
             ),
           ],
