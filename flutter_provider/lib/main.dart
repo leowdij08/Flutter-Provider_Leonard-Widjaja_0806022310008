@@ -114,38 +114,52 @@ class CounterCard extends StatelessWidget {
     super.key,
   });
 
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(8.0),
-      color: counter.color,
-      child: ListTile(
-        title: Text(
-          'Counter $counterIndex: ${counter.value}', // Label nomor urutan counter
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-        ),
-        leading: IconButton(
-          onPressed: onRemove,
-          icon: const Icon(Icons.delete, color: Colors.black),
-        ),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              onPressed: onDecrement,
-              icon: const Icon(Icons.remove),
-            ),
-            IconButton(
-              onPressed: onIncrement,
-              icon: const Icon(Icons.add),
-            ),
-            IconButton(
-              onPressed: onChangeColor,
-              icon: const Icon(Icons.color_lens),
-            ),
-          ],
-        ),
+ @override
+Widget build(BuildContext context) {
+  return Card(
+    margin: const EdgeInsets.all(8.0),
+    color: counter.color,
+    child: ListTile(
+      title: Text(
+        'Counter $counterIndex: ${counter.value}', // Label nomor urutan counter
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
-    );
-  }
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _buildIconButton(
+            icon: Icons.remove,
+            onPressed: onDecrement,
+          ),
+          _buildIconButton(
+            icon: Icons.add,
+            onPressed: onIncrement,
+          ),
+          _buildIconButton(
+            icon: Icons.color_lens,
+            onPressed: onChangeColor,
+          ),
+          _buildIconButton(
+            icon: Icons.delete,
+            onPressed: onRemove,
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget _buildIconButton({required IconData icon, required VoidCallback onPressed}) {
+  return Container(
+    margin: const EdgeInsets.symmetric(horizontal: 4),
+    decoration: BoxDecoration(
+      color: Colors.white, // Background putih untuk tombol
+      shape: BoxShape.circle, // Membuat tombol berbentuk lingkaran
+    ),
+    child: IconButton(
+      icon: Icon(icon, color: Colors.black), // Ikon berwarna hitam
+      onPressed: onPressed,
+    ),
+  );
+}
 }
