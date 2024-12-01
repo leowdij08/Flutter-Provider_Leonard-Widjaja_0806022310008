@@ -1,28 +1,16 @@
-# Advanced Counter App
+**Leonard Widjaja - 0806022310008** 
 
-**Leonard Widjaja - 0806022310008**  
+# Advanced State Mnagement in Flutter 
 
-
-Advanced Counter App adalah aplikasi Flutter interaktif yang memungkinkan pengguna untuk menambahkan, menghapus, dan mengatur ulang counter dengan fitur tambahan seperti perubahan warna acak pada counter. Aplikasi ini menggunakan state management sederhana melalui kelas `GlobalState`.
+Pada proyek Flutter kali ini, saya membuat aplikasi interaktif yang memungkinkan pengguna untuk menambah dan mengurangi counter. Pada setiap counter nantinya akan memiliki warna yang berbeda sesuai dengan warna primaries dari flutter. Di setiap counter, pengguna dapat menambah dan mengurangi nilai dari counter tersebut, selain itu pengguna dapat menghapus, mengubah warna, hingga mengubah urutana counter.
 
 ---
 
 ## Fitur
 
-1. **Tambah Counter Baru**  
-   Pengguna dapat menambahkan counter baru dengan warna yang dipilih secara siklus dari `Colors.primaries`.
-
-2. **Hapus Counter**  
-   Counter dapat dihapus secara individu menggunakan tombol hapus.
-
-3. **Ubah Posisi Counter**  
-   Pengguna dapat mengatur ulang posisi counter menggunakan fitur drag-and-drop.
-
-4. **Increment dan Decrement Counter**  
-   Setiap counter memiliki tombol untuk menambah (+) atau mengurangi (-) nilainya.
-
-5. **Ubah Warna Counter**  
-   Warna counter dapat diubah secara acak dengan memastikan warna baru berbeda dari warna saat ini.
+1. **Tambah Counter**
+   Fitur tambahkan counter dapat dilihat pada potongan kode di 'main.dart' dan juga di 'counter_util.dart'
+   
 
 ---
 
