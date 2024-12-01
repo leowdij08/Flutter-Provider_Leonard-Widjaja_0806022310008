@@ -9,7 +9,7 @@ Pada proyek Flutter kali ini, saya membuat aplikasi interaktif yang memungkinkan
 ## Fitur
 
 1. **Tambah Counter**
-   Fitur tambahkan counter dapat dilihat pada potongan kode di '''main.dart' dan juga di '''counter_util.dart'''
+   Fitur tambahkan counter dapat dilihat pada potongan kode di '''main.dart''' dan juga di '''counter_util.dart'''
    
 
 ---
