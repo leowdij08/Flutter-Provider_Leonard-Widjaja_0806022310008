@@ -11,7 +11,8 @@ Pada proyek Flutter kali ini, saya membuat aplikasi interaktif yang memungkinkan
 1. **Tambah Counter**
    Fitur tambahkan counter dapat dilihat pada potongan kode di ```main.dart``` dan juga di ```counter_util.dart```
    ```main.dart```
-   ```appBar: AppBar(
+   ```
+   appBar: AppBar(
    title: const Text('Global Counter App'),
   actions: [
     // Tombol tambah counter
@@ -24,7 +25,7 @@ Pada proyek Flutter kali ini, saya membuat aplikasi interaktif yang memungkinkan
       icon: const Icon(Icons.add),
     ),
   ],
-),
+),```
 
    
 
